@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="2efeab67-8362-473c-94a5-836b46610abf" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<flow name="demoapiforcicdFlow" doc:id="10e03d4c-5a79-4dde-b739-e7c47d946d39" >
+		<http:listener doc:name="Listener" doc:id="f81f5eef-9990-4c1a-bfa7-0a15598af6a9" config-ref="HTTP_Listener_config" path="/demoJenkins"/>
+		<logger level="INFO" doc:name="Logger" doc:id="5dbc7038-2b7c-4380-ba23-a1472a4e40d5" message="API to integrate with jenkins"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="70555449-4417-4edc-864c-074343224622" />
+	</flow>
+</mule>
